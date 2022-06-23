@@ -104,3 +104,8 @@ void Person ::resetUserPassword()
         }
     }
 }
+int main(int argc, char const *argv[])
+{
+    
+    return 0;
+}
