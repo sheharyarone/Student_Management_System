@@ -13,6 +13,10 @@ Student::Student()
     cout << getName() << endl;
     cout << getUsername() << endl;
     cout << getPassword() << endl;
+    cout<<getRollNo()<<endl;
+    cout<<getClass()<<endl;
+    cout<<getSection()<<endl;
+
 }
 void Student::setClass()
 {
