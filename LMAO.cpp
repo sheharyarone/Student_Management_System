@@ -1,5 +1,3 @@
-
-
 #include<D:\PROJECT\People_Imp.cpp>
 #include<D:\PROJECT\Student_Imp.cpp>
 

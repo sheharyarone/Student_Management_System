@@ -1,14 +1,13 @@
 #ifndef STUDENT_HEADER
 #define STUDENT_HEADER
 
-#include<D:\PROJECT\People.h>
-class Student: public People {
-    public:
-
+#include <D:\PROJECT\People.h>
+class Student : public People
+{
+public:
     string roll_no;
     string _class;
     string section;
-
 
     Student();
     void setRollNo();
@@ -17,7 +16,5 @@ class Student: public People {
     string getClass();
     void setSection();
     string getSection();
-    
-
 };
 #endif

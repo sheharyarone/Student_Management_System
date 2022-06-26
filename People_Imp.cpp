@@ -1,5 +1,3 @@
-
-
 #include<D:\PROJECT\People.h>
 void People :: setName(){
     cout<<"NAME : ";
