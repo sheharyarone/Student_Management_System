@@ -2,6 +2,7 @@
 #define STUDENT_HEADER
 
 #include <D:\PROJECT\People.h>
+
 class Student : public People
 {
 public:
