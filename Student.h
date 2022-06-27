@@ -17,5 +17,9 @@ public:
     string getClass();
     void setSection();
     string getSection();
+    void create();
+    void read_record();
+    void update_record();
+
 };
 #endif

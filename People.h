@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include<fstream>
+#include<sstream>
+
+
 using namespace std;
 
 class People
@@ -20,5 +25,7 @@ public:
     virtual string getUsername();
     virtual void setPassword();
     virtual string getPassword();
+    virtual void create()=0; // NEED TO BE SORT OUT 
+
 };
 #endif

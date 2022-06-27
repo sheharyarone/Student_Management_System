@@ -5,17 +5,17 @@
 Student::Student()
 {
     setName();
-    setUsername();
     setPassword();
     setRollNo();
     setClass();
     setSection();
+    cout<<"Printing details: \n";
     cout << getName() << endl;
-    cout << getUsername() << endl;
     cout << getPassword() << endl;
     cout<<getRollNo()<<endl;
     cout<<getClass()<<endl;
     cout<<getSection()<<endl;
+    create();
 
 }
 void Student::setClass()
@@ -44,4 +44,19 @@ void Student::setRollNo()
 string Student::getRollNo()
 {
     return roll_no;
+}
+void Student::create(){
+    // file pointer
+    fstream fout;
+  
+    // opens an existing csv file or creates a new file.
+    fout.open("StudentRecord.csv", ios::out | ios::app);
+        // Insert the data to file
+        fout << name << ", "
+             << password << ", "
+             << roll_no << ", "
+             << _class << ", "
+             << section 
+             << "\n";
+    
 }
