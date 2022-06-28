@@ -8,18 +8,13 @@ Student::Student()
     setRollNo();
     setClass();
     setSection();
-    cout<<"Printing details: \n";
-    cout << getName() << endl;
-    cout<<getRollNo()<<endl;
-    cout<<getClass()<<endl;
-    cout<<getSection()<<endl;
     create();
 
 }
 void Student::setClass()
 {
     cout << "ENTER THE CLASS : ";
-    getline(cin, _class);
+    cin>>_class;
 }
 string Student::getClass()
 {
@@ -28,7 +23,7 @@ string Student::getClass()
 void Student::setSection()
 {
     cout << "ENTER THE SECTION : ";
-    getline(cin, section);
+    cin>>section;
 }
 string Student::getSection()
 {
@@ -37,9 +32,9 @@ string Student::getSection()
 void Student::setRollNo()
 {
     cout << "ENTER THE ROLL NO. : ";
-    getline(cin, roll_no);
+    cin>>roll_no;
 }
-string Student::getRollNo()
+int Student::getRollNo()
 {
     return roll_no;
 }
@@ -50,10 +45,76 @@ void Student::create(){
     // opens an existing csv file or creates a new file.
     fout.open("StudentRecord.csv", ios::out | ios::app);
         // Insert the data to file
-        fout << roll_no << ", "
-             <<  name << ", "
-             << _class << ", "
+        fout<<", "<<roll_no << " , "
+             <<  name << " , "
+             << _class << " , "
              << section 
-             << "\n";
+             <<endl;
     
+}
+void Student::read_record()
+{
+  
+    // File pointer
+    fstream fin;
+  
+    // Open an existing file
+    fin.open("StudentRecord.csv", ios::in);
+  
+    // Get the roll number
+    // of which the data is required
+    int rollnum, roll2;
+    int count = 0;
+    cout << "Enter the roll number "
+         << "of the student to display details: ";
+    cin >> rollnum;
+  
+    // Read the Data from the file
+    // as String Vector
+    vector<string> row;
+    string line, word, temp;
+  
+    while (fin >> temp) {
+  
+        row.clear();
+  
+        // read an entire row and
+        // store it in a string variable 'line'
+        getline(fin, line);
+        cout<<line<<endl;
+        // used for breaking words
+        stringstream s(line);
+        // cout<<line<<endl; FOR TESTING PRUPOSE
+
+  
+        // read every column data of a row and
+        // store it in a string variable, 'word'
+        while (getline(s, word, ',')) {
+  
+            // add all the column data
+            // of a row to a vector
+            row.push_back(word);
+        }
+//         for(int i=0; i < row.size(); i++){
+//             cout << row.at(i) << ' ';
+// }
+   
+  
+        // convert string to integer for comparision
+        
+        roll2 = stoi(row[0]);
+        // Compare the roll number
+        if (roll2 == rollnum) {
+            
+            // Print the found data
+            count = 1;
+            cout << "Details of Roll " << row[0] << " : \n";
+            cout << "NAME: " << row[1] << "\n";
+            cout << "CLASS: " << row[2] << "\n";
+            cout << "SECTION: " << row[3] << "\n";
+            break;
+        }
+    }
+    if (count == 0)
+        cout << "Record not found\n";
 }

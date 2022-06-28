@@ -5,6 +5,7 @@
 int main()
 {
     Student S1;
-    // S1.create(); // TESTING CREATE FUNCTION WHICH CREATES A CSV FILE
+    S1.read_record();
+    
     return 0;
 }

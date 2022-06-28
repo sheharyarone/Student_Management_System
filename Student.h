@@ -6,13 +6,13 @@
 class Student : public People
 {
 public:
-    string roll_no;
+    int roll_no;
     string _class;
     string section;
 
     Student();
     void setRollNo();
-    string getRollNo();
+    int getRollNo();
     void setClass();
     string getClass();
     void setSection();
