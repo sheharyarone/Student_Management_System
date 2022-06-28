@@ -2,6 +2,7 @@
 #define PEOPLE_HEADER
 
 #include <iostream>
+#include<stdio.h>
 #include <string>
 #include <vector>
 #include<fstream>
