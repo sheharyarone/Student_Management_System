@@ -3,6 +3,7 @@
     "files.associations": {
         "istream": "cpp",
         "string": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "limits": "cpp"
     }
 }

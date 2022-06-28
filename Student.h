@@ -20,6 +20,7 @@ public:
     void create();
     void read_record();
     void update_record();
+    void delete_record();
 
 };
 #endif

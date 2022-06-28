@@ -4,17 +4,17 @@
 
 Student::Student()
 {
-    setName();
-    setRollNo();
-    setClass();
-    setSection();
-    create();
+    // setName();
+    // setRollNo();
+    // setClass();
+    // setSection();
+    // create();
 
 }
 void Student::setClass()
 {
     cout << "ENTER THE CLASS : ";
-    cin>>_class;
+    getline(cin,_class);
 }
 string Student::getClass()
 {
@@ -23,7 +23,7 @@ string Student::getClass()
 void Student::setSection()
 {
     cout << "ENTER THE SECTION : ";
-    cin>>section;
+    getline(cin,section);
 }
 string Student::getSection()
 {
@@ -33,6 +33,7 @@ void Student::setRollNo()
 {
     cout << "ENTER THE ROLL NO. : ";
     cin>>roll_no;
+    cin.ignore( numeric_limits <streamsize> ::max(), '\n' );
 }
 int Student::getRollNo()
 {
@@ -95,9 +96,6 @@ void Student::read_record()
             // of a row to a vector
             row.push_back(word);
         }
-//         for(int i=0; i < row.size(); i++){
-//             cout << row.at(i) << ' ';
-// }
    
   
         // convert string to integer for comparision
@@ -147,6 +145,7 @@ void Student::update_record()
 		<< "to be updated: "<<endl;
         cout<<"1.NAME   2.Class     3.Section"<<endl;
 	cin>>sub;
+    cin.ignore( numeric_limits <streamsize> ::max(), '\n' );
 
 	// Determine the index of the subject
 	// where Maths has index 2,
@@ -164,16 +163,15 @@ void Student::update_record()
 
 	// Get the new marks
 	cout << "Enter the updated record value : ";
-	cin>>new_entry;
+	getline(cin,new_entry);
 
 	// Traverse the file
 	while (!fin.eof()) {
 
 		row.clear();
-		cout<<"LMAO"<<endl;
 
 		getline(fin, line);
-		cout<<line<<endl;
+		
 		stringstream s(line);
 
 		while (getline(s, word, ',')) {
@@ -193,7 +191,7 @@ void Student::update_record()
 
 			// the str() converts number into string
 			// row[index] = convert.str();
-            row[index]=new_entry;
+            row[index]=' '+new_entry;
 
 			if (!fin.eof()) {
 				for (i = 0; i < row_size - 1; i++) {
@@ -201,7 +199,7 @@ void Student::update_record()
 					// write the updated data
 					// into a new file 'reportcardnew.csv'
 					// using fout
-					fout << row[i] << ", ";
+					fout << row[i] << ",";
 				}
 
 				fout << row[row_size - 1] << "\n";
@@ -213,7 +211,7 @@ void Student::update_record()
 
 					// writing other existing records
 					// into the new file using fout.
-					fout << row[i] << ", ";
+					fout << row[i] << ",";
 				}
 
 				// the last column data ends with a '\n'
@@ -235,3 +233,78 @@ void Student::update_record()
 	// renaming the updated file with the existing file name
 	rename("StudentRecordnew.csv", "StudentRecord.csv");
 }
+void Student::delete_record()
+{
+  
+    // Open FIle pointers
+    fstream fin, fout;
+  
+    // Open the existing file
+    fin.open("StudentRecord.csv", ios::in);
+  
+    // Create a new file to store the non-deleted data
+    fout.open("StudentRecordnew.csv", ios::out);
+  
+    int rollnum, roll1, marks, count = 0, i;
+    char sub;
+    int index, new_marks;
+    string line, word;
+    vector<string> row;
+  
+    // Get the roll number
+    // to decide the data to be deleted
+    cout << "Enter the roll number "
+         << "of the record to be deleted: ";
+    cin >> rollnum;
+  
+    // Check if this record exists
+    // If exists, leave it and
+    // add all other data to the new file
+    while (!fin.eof()) {
+  
+        row.clear();
+        getline(fin, line);
+        stringstream s(line);
+  
+        while (getline(s, word, ',')) {
+            row.push_back(word);
+        }
+		// cout<<row[0+1]<<endl;
+        int row_size = row.size();
+        roll1 = stoi(row[0+1]);
+
+  
+        // writing all records,
+        // except the record to be deleted,
+        // into the new file 'reportcardnew.csv'
+        // using fout pointer
+        if (roll1 != rollnum) {
+            if (!fin.eof()) {
+                for (i = 0; i < row_size - 1; i++) {
+                    fout << row[i] << ", ";
+                }
+                fout << row[row_size - 1] << "\n";
+            }
+        }
+        else {
+            count = 1;
+        }
+        if (fin.eof())
+            break;
+    }
+    if (count == 1)
+        cout << "Record deleted\n";
+    else
+        cout << "Record not found\n";
+  
+    // Close the pointers
+    fin.close();
+    fout.close();
+  
+    // removing the existing file
+    remove("StudentRecord.csv");
+  
+    // renaming the new file with the existing file name
+    rename("StudentRecordnew.csv", "StudentRecord.csv");
+}
+ 
