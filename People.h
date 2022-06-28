@@ -15,8 +15,6 @@ class People
 
 public:
     string name;
-    string username;
-    string password;
 
     People() {}
     virtual void setName();

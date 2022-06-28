@@ -51,7 +51,6 @@ void Student::create(){
     fout.open("StudentRecord.csv", ios::out | ios::app);
         // Insert the data to file
         fout << roll_no << ", "
-             << password << ", "
              <<  name << ", "
              << _class << ", "
              << section 
