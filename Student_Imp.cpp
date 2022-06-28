@@ -5,13 +5,11 @@
 Student::Student()
 {
     setName();
-    setPassword();
     setRollNo();
     setClass();
     setSection();
     cout<<"Printing details: \n";
     cout << getName() << endl;
-    cout << getPassword() << endl;
     cout<<getRollNo()<<endl;
     cout<<getClass()<<endl;
     cout<<getSection()<<endl;
@@ -52,9 +50,9 @@ void Student::create(){
     // opens an existing csv file or creates a new file.
     fout.open("StudentRecord.csv", ios::out | ios::app);
         // Insert the data to file
-        fout << name << ", "
+        fout << roll_no << ", "
              << password << ", "
-             << roll_no << ", "
+             <<  name << ", "
              << _class << ", "
              << section 
              << "\n";

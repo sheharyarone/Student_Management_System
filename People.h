@@ -21,10 +21,7 @@ public:
     People() {}
     virtual void setName();
     virtual string getName();
-    virtual void setUsername();
-    virtual string getUsername();
-    virtual void setPassword();
-    virtual string getPassword();
+    
     virtual void create()=0; // NEED TO BE SORT OUT 
 
 };
