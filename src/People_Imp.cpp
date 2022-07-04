@@ -1,4 +1,6 @@
-#include<D:\PROJECT\People.h>
+#include "include\People.h"
+
+
 void People :: setName(){
     cout<<"NAME : ";
     getline(cin,name);

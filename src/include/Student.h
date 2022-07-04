@@ -1,18 +1,18 @@
 #ifndef STUDENT_HEADER
 #define STUDENT_HEADER
 
-#include <D:\PROJECT\People.h>
+#include "People.h"
 
 class Student : public People
 {
 public:
-    int roll_no;
+    string roll_no;
     string _class;
     string section;
 
     Student();
     void setRollNo();
-    int getRollNo();
+    string getRollNo();
     void setClass();
     string getClass();
     void setSection();
@@ -20,6 +20,7 @@ public:
     void create();
     void read_record();
     void update_record();
+    void delete_record();
 
 };
 #endif

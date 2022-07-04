@@ -1,4 +1,4 @@
-#include<D:\PROJECT\RoomManagement.h>
+#include "include\RoomManagement.h"
 
 
 bool Room_Class::check_room(int x)
@@ -6,8 +6,11 @@ bool Room_Class::check_room(int x)
     // File pointer
     fstream fin;
 
+    // string file_dir = "/csv/datafiles/";
+    // string csvFile = file_dir + "/RoomAllocation.csv";
+
     // Open an existing file
-    fin.open("RoomAllocation.csv", ios::in);
+    fin.open("src/csv/RoomAllocation.csv", ios::in);
 
     // Read the Data from the file
     // as String Vector
@@ -60,8 +63,11 @@ bool Room_Class::check_room()
     // File pointer
     fstream fin;
 
+    // string file_dir = "/csv/datafiles/";
+    // string csvFile = file_dir + "/RoomAllocation.csv";
+
     // Open an existing file
-    fin.open("RoomAllocation.csv", ios::in);
+    fin.open("src/csv/RoomAllocation.csv", ios::in);
 
     // Read the Data from the file
     // as String Vector
@@ -114,7 +120,7 @@ bool Room_Class::check_class()
     fstream fin;
 
     // Open an existing file
-    fin.open("RoomAllocation.csv", ios::in);
+    fin.open("csv/RoomAllocation.csv", ios::in);
 
     // Read the Data from the file
     // as String Vector
@@ -168,7 +174,8 @@ Room_Class::Room_Class()
     // setroom_no();
     // set_class();
     // set_section();
-    update_record();
+    // create();
+    // update_record();
 }
 void Room_Class::setroom_no()
 {
@@ -204,14 +211,14 @@ void Room_Class ::set_section()
         set_section();
     }
 }
-
 void Room_Class ::create()
 {
     // file pointer
     fstream fout;
 
     // opens an existing csv file or creates a new file.
-    fout.open("RoomAllocation.csv", ios::out | ios::app);
+     fout.open("src/csv/RoomAllocation.csv", ios::out | ios::app);
+    
     // Insert the data to file
     fout << ", " << room_no << ", "
          << _class << ", "
@@ -225,7 +232,7 @@ void Room_Class::read_record()
     fstream fin;
 
     // Open an existing file
-    fin.open("RoomAllocation.csv", ios::in);
+    fin.open("src/csv/RoomAllocation.csv", ios::in);
 
     // Get the roll number
     // of which the data is required
@@ -283,10 +290,10 @@ void Room_Class::update_record(){
 	fstream fin, fout;
 
 	// Open an existing record
-	fin.open("RoomAllocation.csv", ios::in);
+	fin.open("src/csv/RoomAllocation.csv", ios::in);
 
 	// Create a new file to store updated data
-	fout.open("RoomAllocationnew.csv", ios::out);
+	fout.open("src/csv/RoomAllocationnew.csv", ios::out);
 
 	int _room_no, roll1, count = 0, i;
 	int sub;
@@ -337,6 +344,7 @@ void Room_Class::update_record(){
             row[1]=room_no;
 
 			row[1] = convert.str();
+            row[1]=' '+row[1];
 
 			if (!fin.eof()) {
 				for (i = 0; i < row_size - 1; i++) {
@@ -344,7 +352,7 @@ void Room_Class::update_record(){
 					// write the updated data
 					// into a new file 'reportcardnew.csv'
 					// using fout
-					fout << row[i] << ", ";
+					fout << row[i] << ",";
 				}
 
 				fout << row[row_size - 1] << "\n";
@@ -356,7 +364,7 @@ void Room_Class::update_record(){
 
 					// writing other existing records
 					// into the new file using fout.
-					fout << row[i] << ", ";
+					fout << row[i] << ",";
 				}
 
 				// the last column data ends with a '\n'
@@ -371,10 +379,10 @@ void Room_Class::update_record(){
 	fout.close();
 
 	// removing the existing file
-	remove("RoomAllocation.csv");
+	remove("src/csv/RoomAllocation.csv");
 
 	// renaming the updated file with the existing file name
-	rename("RoomAllocationnew.csv", "RoomAllocation.csv");
+	rename("src/csv/RoomAllocationnew.csv", "src/csv/RoomAllocation.csv");
 }
 // void Room_Class::delete_record(){
 // 	 fstream fin, fout;
@@ -446,3 +454,4 @@ void Room_Class::update_record(){
 //     // renaming the new file with the existing file name
 //     rename("StudentRecordnew.csv", "StudentRecord.csv");
 // }
+

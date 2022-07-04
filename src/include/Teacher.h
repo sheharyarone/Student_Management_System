@@ -1,7 +1,7 @@
 #ifndef TEACHER_HEADER
 #define TEACHER_HEADER
 
-#include<D:\PROJECT\People.h>
+#include "People.h"
 
 class Teacher : public People
 {

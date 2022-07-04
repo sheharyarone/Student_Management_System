@@ -1,4 +1,7 @@
-#include <D:\PROJECT\Teacher.h>
+#include "include\Teacher.h"
+
+
+
 string Teacher::getID(){
     return id;
 }

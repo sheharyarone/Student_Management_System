@@ -1,3 +1,6 @@
+#ifndef ROOM_HEADER
+#define ROOM_HEADER
+
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -17,6 +20,10 @@ public:
 public:
     void setroom_no();
     void set_class();
+    bool check_room(int);
+    bool check_room();
+
+
     void set_section();
     Room_Class();
     void create();
@@ -25,8 +32,7 @@ public:
 
     private:
     bool check_class();
-    bool check_room();
-    bool check_room(int);
     
 };
 
+#endif
