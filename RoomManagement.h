@@ -25,8 +25,8 @@ public:
 
     private:
     bool check_class();
-    bool check_room(int);
     bool check_room();
-
+    bool check_room(int);
     
 };
+
