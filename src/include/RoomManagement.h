@@ -20,8 +20,7 @@ public:
 public:
     void setroom_no();
     void set_class();
-    bool check_room(int);
-    bool check_room();
+    
 
 
     void set_section();
@@ -29,9 +28,12 @@ public:
     void create();
     void update_record();
     void read_record();
+    void availabe_rooms();
 
     private:
     bool check_class();
+    bool check_room(int);
+    bool check_room();
     
 };
 

@@ -7,9 +7,6 @@
 
 int main()
 {
-    Student s;
-    s.read_record();
-    s.update_record();
-    s.delete_record();
+    Room_Class room;
     return 0;
 }

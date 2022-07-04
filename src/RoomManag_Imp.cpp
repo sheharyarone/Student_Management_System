@@ -1,118 +1,169 @@
 #include "include\RoomManagement.h"
-
+#include <iostream>
 
 bool Room_Class::check_room(int x)
-{
-    // File pointer
-    fstream fin;
-
-    // string file_dir = "/csv/datafiles/";
-    // string csvFile = file_dir + "/RoomAllocation.csv";
-
-    // Open an existing file
-    fin.open("src/csv/RoomAllocation.csv", ios::in);
-
-    // Read the Data from the file
-    // as String Vector
-    vector<string> row;
-    string line, word, temp;
-    int count = 0;
-    while (fin >> temp)
+{    if (x >= 1 && x <= 20)
     {
 
-        row.clear();
+        // File pointer
+        fstream fin;
 
-        // read an entire row and
-        // store it in a string variable 'line'
-        getline(fin, line);
+        // string file_dir = "/csv/datafiles/";
+        // string csvFile = file_dir + "/RoomAllocation.csv";
 
-        // cout<<line<<endl;
+        // Open an existing file
+        fin.open("src/csv/RoomAllocation.csv", ios::in);
 
-        // used for breaking words
-        stringstream s(line);
-
-        // read every column data of a row and
-        // store it in a string variable, 'word'
-        while (getline(s, word, ','))
+        // Read the Data from the file
+        // as String Vector
+        vector<string> row;
+        string line, word, temp;
+        int count = 0;
+        while (fin >> temp)
         {
 
-            // add all the column data
-            // of a row to a vector
-            row.push_back(word);
-        }
+            row.clear();
 
-        if (stoi(row[0])==x)
-        {
-            count = 1;
+            // read an entire row and
+            // store it in a string variable 'line'
+            getline(fin, line);
+
+            // cout<<line<<endl;
+
+            // used for breaking words
+            stringstream s(line);
+
+            // read every column data of a row and
+            // store it in a string variable, 'word'
+            while (getline(s, word, ','))
+            {
+
+                // add all the column data
+                // of a row to a vector
+                row.push_back(word);
+            }
+
+            if (stoi(row[0]) == x)
+            {
+                count = 1;
+            }
         }
-       
-    }
-     if (count == 0)
+        if (count == 0)
         {
 
             return false;
         }
         else
         {
+            char ch;
+            cout << "ROOM ALREADY OCCUPIED" << endl;
+            cout << "PRESS A TO CHECK AVAILABLE ROOMS" << endl;
+            cout << "PRESS B TO CONTINUE" << endl;
+            cin >> ch;
+            if ((ch == 'a') || (ch == 'A'))
+            {
+                availabe_rooms();
+            }
             return true;
         }
+    }
+    else
+    {
+        cout << "INVALID ROOM NUMBER" << endl;
+        cout << "PRESS A TO CHECK AVAILABLE ROOMS" << endl;
+        cout << "PRESS B TO CONTINUE" << endl;
+        char ch;
+        cin >> ch;
+        if ((ch == 'a') || (ch == 'A'))
+        {
+            availabe_rooms();
+        }
+
+        return true;
+    }
 }
 
 bool Room_Class::check_room()
 {
-    // File pointer
-    fstream fin;
-
-    // string file_dir = "/csv/datafiles/";
-    // string csvFile = file_dir + "/RoomAllocation.csv";
-
-    // Open an existing file
-    fin.open("src/csv/RoomAllocation.csv", ios::in);
-
-    // Read the Data from the file
-    // as String Vector
-    vector<string> row;
-    string line, word, temp;
-    int count = 0;
-    while (fin >> temp)
+    if (room_no >= 1 && room_no <= 20)
     {
 
-        row.clear();
+        // File pointer
+        fstream fin;
 
-        // read an entire row and
-        // store it in a string variable 'line'
-        getline(fin, line);
+        // string file_dir = "/csv/datafiles/";
+        // string csvFile = file_dir + "/RoomAllocation.csv";
 
-        // cout<<line<<endl;
+        // Open an existing file
+        fin.open("src/csv/RoomAllocation.csv", ios::in);
 
-        // used for breaking words
-        stringstream s(line);
-
-        // read every column data of a row and
-        // store it in a string variable, 'word'
-        while (getline(s, word, ','))
+        // Read the Data from the file
+        // as String Vector
+        vector<string> row;
+        string line, word, temp;
+        int count = 0;
+        while (fin >> temp)
         {
 
-            // add all the column data
-            // of a row to a vector
-            row.push_back(word);
-        }
+            row.clear();
 
-        if (stoi(row[0])==room_no)
-        {
-            count = 1;
+            // read an entire row and
+            // store it in a string variable 'line'
+            getline(fin, line);
+
+            // cout<<line<<endl;
+
+            // used for breaking words
+            stringstream s(line);
+
+            // read every column data of a row and
+            // store it in a string variable, 'word'
+            while (getline(s, word, ','))
+            {
+
+                // add all the column data
+                // of a row to a vector
+                row.push_back(word);
+            }
+
+            if (stoi(row[0]) == room_no)
+            {
+                count = 1;
+            }
         }
-       
-    }
-     if (count == 0)
+        if (count == 0)
         {
 
             return false;
         }
         else
         {
+            char ch;
+            cout << "ROOM ALREADY OCCUPIED" << endl;
+            cout << "PRESS A TO CHECK AVAILABLE ROOMS" << endl;
+            cout << "PRESS B TO CONTINUE" << endl;
+            cin >> ch;
+            if ((ch == 'a') || (ch == 'A'))
+            {
+                availabe_rooms();
+            }
             return true;
         }
+    }
+    else
+    {
+        cout << "INVALID ROOM NUMBER" << endl;
+        cout << "PRESS A TO CHECK AVAILABLE ROOMS" << endl;
+        cout << "PRESS B TO CONTINUE" << endl;
+        char ch;
+        cin >> ch;
+        if ((ch == 'a') || (ch == 'A'))
+        {
+            availabe_rooms();
+        }
+
+        return true;
+    }
 }
 bool Room_Class::check_class()
 {
@@ -124,9 +175,9 @@ bool Room_Class::check_class()
 
     // Read the Data from the file
     // as String Vector
-    
+
     string _section;
-    _section=' '+section;
+    _section = ' ' + section;
     vector<string> row;
     string line, word, temp;
     int count = 0;
@@ -138,7 +189,6 @@ bool Room_Class::check_class()
         // read an entire row and
         // store it in a string variable 'line'
         getline(fin, line);
-
 
         // used for breaking words
         stringstream s(line);
@@ -152,37 +202,38 @@ bool Room_Class::check_class()
             // of a row to a vector
             row.push_back(word);
         }
-    
+
         if (((row[2]) == _section) && (stoi(row[1]) == _class))
         {
             count = 1;
         }
-        
     }
     if (count == 0)
-        {
+    {
 
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 Room_Class::Room_Class()
 {
-    // setroom_no();
-    // set_class();
-    // set_section();
-    // create();
-    // update_record();
+    setroom_no();
+    set_class();
+    set_section();
+    create();
+    read_record();
+    update_record();
 }
 void Room_Class::setroom_no()
 {
-    cout << "ENTER THE NEW ROOM NO. : ";
+    cout << "ENTER THE NEW ROOM NO. BTW 1 and 20 : ";
     cin >> room_no;
-    if (check_room()){
-        cout << "ROOM ALREADY OCCUPIED !" << endl;
+
+    if (check_room())
+    {
         setroom_no();
     }
 }
@@ -202,8 +253,8 @@ void Room_Class ::set_section()
 {
     cout << "ENTER THE SECTION : ";
     cin >> section;
-    for(int i=0;i<section.length();i++)
-		section[i]=toupper(section[i]);
+    for (int i = 0; i < section.length(); i++)
+        section[i] = toupper(section[i]);
     if ((check_class()))
     {
         cout << "SECTION ALREADY EXISTS" << endl;
@@ -217,8 +268,8 @@ void Room_Class ::create()
     fstream fout;
 
     // opens an existing csv file or creates a new file.
-     fout.open("src/csv/RoomAllocation.csv", ios::out | ios::app);
-    
+    fout.open("src/csv/RoomAllocation.csv", ios::out | ios::app);
+
     // Insert the data to file
     fout << ", " << room_no << ", "
          << _class << ", "
@@ -244,7 +295,7 @@ void Room_Class::read_record()
     // as String Vector
     vector<string> row;
     string line, word, temp;
-        int count=0;
+    int count = 0;
 
     while (fin >> temp)
     {
@@ -271,156 +322,177 @@ void Room_Class::read_record()
 
         // convert string to integer for comparision
 
-         
         // Compare the roll number
-        if (stoi(row[0])==room)
+        if (stoi(row[0]) == room)
         {
-            count=1;
+            count = 1;
             cout << "ROOM NO. : " << row[0] << endl;
             cout << "CLASS : " << row[1] << endl;
             cout << "SECTION : " << row[2] << endl;
         }
-        
     }
     if (count == 0)
         cout << "Record not found\n";
 }
-void Room_Class::update_record(){
+void Room_Class::update_record()
+{
     // File pointer
-	fstream fin, fout;
+    fstream fin, fout;
 
-	// Open an existing record
-	fin.open("src/csv/RoomAllocation.csv", ios::in);
+    // Open an existing record
+    fin.open("src/csv/RoomAllocation.csv", ios::in);
 
-	// Create a new file to store updated data
-	fout.open("src/csv/RoomAllocationnew.csv", ios::out);
+    // Create a new file to store updated data
+    fout.open("src/csv/RoomAllocationnew.csv", ios::out);
 
-	int _room_no, roll1, count = 0, i;
-	int sub;
+    int _room_no, roll1, count = 0, i;
+    int sub;
     string new_entry;
-	int index;
-	string line, word;
-	vector<string> row;
+    int index;
+    string line, word;
+    vector<string> row;
 
-	// Get the roll number from the user
-	
+    // Get the roll number from the user
 
-	// Get the data to be updated
-	cout<<"ENTER THE ROOM NO. YOU WANT TO UPDATE : ";
-    cin>>_room_no;
+    // Get the data to be updated
+    cout << "ENTER THE ROOM NO. YOU WANT TO UPDATE : ";
+    cin >> _room_no;
 
-    if (!(check_room(_room_no))){
+    if (!(check_room(_room_no)))
+    {
         cout << "ROOM ALREADY FREE !" << endl;
         update_record();
     }
-    cout<<"UPDATED DATA : "<<endl;
+    cout << "UPDATED DATA : " << endl;
     setroom_no();
-	
-	// Traverse the file
-	while (!fin.eof()) {
 
-		row.clear();
-		
+    // Traverse the file
+    while (!fin.eof())
+    {
 
-		getline(fin, line);
-		// cout<<line<<endl;
-		stringstream s(line);
+        row.clear();
 
-		while (getline(s, word, ',')) {
-			row.push_back(word);
+        getline(fin, line);
+        // cout<<line<<endl;
+        stringstream s(line);
 
-		}
-		
-		int row_size = row.size();
+        while (getline(s, word, ','))
+        {
+            row.push_back(word);
+        }
 
-		if (_room_no == stoi(row[1])) {
-			count = 1;
-			stringstream convert;
+        int row_size = row.size();
 
-			// sending a number as a stream into output string
-			convert << room_no;
+        if (_room_no == stoi(row[1]))
+        {
+            count = 1;
+            stringstream convert;
 
-			// the str() converts number into string
-            row[1]=room_no;
+            // sending a number as a stream into output string
+            convert << room_no;
 
-			row[1] = convert.str();
-            row[1]=' '+row[1];
+            // the str() converts number into string
+            row[1] = room_no;
 
-			if (!fin.eof()) {
-				for (i = 0; i < row_size - 1; i++) {
+            row[1] = convert.str();
+            row[1] = ' ' + row[1];
 
-					// write the updated data
-					// into a new file 'reportcardnew.csv'
-					// using fout
-					fout << row[i] << ",";
-				}
+            if (!fin.eof())
+            {
+                for (i = 0; i < row_size - 1; i++)
+                {
 
-				fout << row[row_size - 1] << "\n";
-			}
-		}
-		else {
-			if (!fin.eof()) {
-				for (i = 0; i < row_size - 1; i++) {
+                    // write the updated data
+                    // into a new file 'reportcardnew.csv'
+                    // using fout
+                    fout << row[i] << ",";
+                }
 
-					// writing other existing records
-					// into the new file using fout.
-					fout << row[i] << ",";
-				}
+                fout << row[row_size - 1] << "\n";
+            }
+        }
+        else
+        {
+            if (!fin.eof())
+            {
+                for (i = 0; i < row_size - 1; i++)
+                {
 
-				// the last column data ends with a '\n'
-				fout << row[row_size - 1] << "\n";
-			}
-		}
-		if (fin.eof())
-			break;
-	}
+                    // writing other existing records
+                    // into the new file using fout.
+                    fout << row[i] << ",";
+                }
 
-	fin.close();
-	fout.close();
+                // the last column data ends with a '\n'
+                fout << row[row_size - 1] << "\n";
+            }
+        }
+        if (fin.eof())
+            break;
+    }
 
-	// removing the existing file
-	remove("src/csv/RoomAllocation.csv");
+    fin.close();
+    fout.close();
 
-	// renaming the updated file with the existing file name
-	rename("src/csv/RoomAllocationnew.csv", "src/csv/RoomAllocation.csv");
+    // removing the existing file
+    remove("src/csv/RoomAllocation.csv");
+
+    // renaming the updated file with the existing file name
+    rename("src/csv/RoomAllocationnew.csv", "src/csv/RoomAllocation.csv");
+}
+
+void Room_Class::availabe_rooms()
+{
+    for (int i = 1; i < 21; i++)
+    {
+        if (!(check_room(i)))
+            if (i != 20)
+            {
+                cout << i << " , ";
+            }
+            else
+            {
+                cout << i << endl;
+            }
+    }
 }
 // void Room_Class::delete_record(){
 // 	 fstream fin, fout;
-  
+
 //     // Open the existing file
 //     fin.open("StudentRecord.csv", ios::in);
-  
+
 //     // Create a new file to store the non-deleted data
 //     fout.open("StudentRecordnew.csv", ios::out);
-  
+
 //     int rollnum, roll1, marks, count = 0, i;
 //     char sub;
 //     int index, new_marks;
 //     string line, word;
 //     vector<string> row;
-  
+
 //     // Get the roll number
 //     // to decide the data to be deleted
 //     cout << "Enter the roll number "
 //          << "of the record to be deleted: ";
 //     cin >> rollnum;
-  
+
 //     // Check if this record exists
 //     // If exists, leave it and
 //     // add all other data to the new file
 //     while (!fin.eof()) {
-  
+
 //         row.clear();
 //         getline(fin, line);
 //         stringstream s(line);
-  
+
 //         while (getline(s, word, ',')) {
 //             row.push_back(word);
 //         }
-  
+
 //         int row_size = row.size();
 //         roll1 = stoi(row[1]);
-  
+
 //         // writing all records,
 //         // except the record to be deleted,
 //         // into the new file 'reportcardnew.csv'
@@ -443,15 +515,14 @@ void Room_Class::update_record(){
 //         cout << "Record deleted\n";
 //     else
 //         cout << "Record not found\n";
-  
+
 //     // Close the pointers
 //     fin.close();
 //     fout.close();
-  
+
 //     // removing the existing file
 //     remove("StudentRecord.csv");
-  
+
 //     // renaming the new file with the existing file name
 //     rename("StudentRecordnew.csv", "StudentRecord.csv");
 // }
-
