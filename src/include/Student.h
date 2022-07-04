@@ -7,16 +7,22 @@ class Student : public People
 {
 public:
     string roll_no;
-    string _class;
-    string section;
+    int _class;
+    char section;
 
     Student();
     void setRollNo();
     string getRollNo();
     void setClass();
-    string getClass();
+    int getClass();
     void setSection();
-    string getSection();
+    char getSection();
+
+    void addSection();
+    string getSections(int);
+
+
+    void display_record();
     void create();
     void read_record();
     void update_record();

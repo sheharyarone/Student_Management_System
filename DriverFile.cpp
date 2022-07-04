@@ -7,6 +7,9 @@
 
 int main()
 {
-    Room_Class room;
+    Student S;
+    // S.addSection();
+    cout<<S.getSections(4); //DOUBLE DAFA PRINT HU RHA 1 SECTION IF IT IS ONLY ONCE
+
     return 0;
 }

@@ -4,11 +4,14 @@
 
 Student::Student()
 {
-    setName();
-    setRollNo();
-    setClass();
-    setSection();
-    create();
+    // setName();
+    // setRollNo();
+    // setClass();
+    // setSection();
+    // create();
+	// read_record();
+	// update_record();
+	// delete_record();
 	
 
 
@@ -16,9 +19,13 @@ Student::Student()
 void Student::setClass()
 {
     cout << "ENTER THE CLASS : ";
-    cin>>_class;
+	cin>>_class;
+	if (!(_class>=1 && _class<=8)){
+		cout<<"INVALID CLASS"<<endl;
+		setClass();
+	}
 }
-string Student::getClass()
+int Student::getClass()
 {
     return _class;
 }
@@ -27,7 +34,7 @@ void Student::setSection()
     cout << "ENTER THE SECTION : ";
     cin>>section;
 }
-string Student::getSection()
+char Student::getSection()
 {
     return section;
 }
@@ -48,7 +55,7 @@ void Student::create(){
     // opens an existing csv file or creates a new file.
     fout.open("src/csv/StudentRecord.csv", ios::out | ios::app);
         // Insert the data to file
-        fout<<roll_no << ", "
+        fout<<", "<<roll_no << ", "
              <<  name << ", "
              << _class << ", "
              << section 
@@ -79,18 +86,14 @@ void Student::read_record()
 			row.push_back(word);
 			
 		}
-		
-
-		
-		
-		if (id1 == stoi(row[0])) {
+		if (id1 == stoi(row[0+1])) {
             
             // Print the found data
             count = 1;
-            cout << "Details of ID " << row[0] << " : \n";
-            cout << "NAME: " << row[1] << "\n";
-            cout << "CLASS: " << row[2] << "\n";
-            cout << "SECTION: " << row[3] << "\n";
+            cout << "Details of ID " << row[0+1] << " : \n";
+            cout << "NAME: " << row[1+1] << "\n";
+            cout << "CLASS: " << row[2+1] << "\n";
+            cout << "SECTION: " << row[3+1] << "\n";
 			break;
         }
   
@@ -166,7 +169,7 @@ void Student::update_record()
 		
 		int row_size = row.size();
 
-		if (rollnum == stoi(row[0])) {
+		if (rollnum == stoi(row[0+1])) {
 			count = 1;
 			stringstream convert;
 
@@ -175,7 +178,7 @@ void Student::update_record()
 
 			// the str() converts number into string
 			// row[index] = convert.str();
-            row[index-1]=' '+new_entry;
+            row[index]=' '+new_entry;
 			
 
 			if (!fin.eof()) {
@@ -231,7 +234,7 @@ void Student::delete_record(){
 	fout.open("src/csv/StudentRecordnew.csv", ios::out);
 
 	int id1, count = 0, i;
-	string line, word;
+	string line, word ,temp,line1;
 	vector<string> row;
 	cout<<"ENTER THE ID TO DELETE : ";
 	cin>>id1;
@@ -247,31 +250,28 @@ void Student::delete_record(){
 		if (line.size() == 0) break;
 
 		stringstream s(line);
+		cout<<line<<endl;
 
 		while (getline(s, word, ',')) {
 			row.push_back(word);
 		}
+		if (id1==stoi(row[1])){
+			count=1;
+			break;
+		}
+	}
+		while (fin >> temp){
+			row.clear();
+			getline(fin,line1);
+			
+			stringstream s(line1);
+			line1=","+line1;
 
-		int row_size = (int)row.size();
-
-		// writing all records,
-		// except the record to be deleted,
-		// into the new file 'reportcardnew.csv'
-		// using fout pointer
-		if (id1 != id1) {
-			if (!fin.eof()) {
-				for (i = 0; i < row_size - 1; i++) {
-					fout << row[i] << ", ";
-				}
-				fout << row[row_size - 1] << "\n";
+			if (line !=line1){
+				
+				fout<<line1<<endl;
 			}
 		}
-		else {
-			count = 1;
-		}
-		if (fin.eof())
-			break;
-	}
     fin.close();
     fout.close();
     remove("src/csv/StudentRecord.csv");
@@ -283,4 +283,77 @@ void Student::delete_record(){
 		cout << "Record not found\n";
     }
 
+}
+void Student::display_record(){
+	fstream fin;
+	fin.open("src/csv/StudentRecord.csv", ios::in);
+	string line, word;
+	vector<string> row;
+	cout<<"ROLL NO.\t NAME\t\tCLASS\t\tSECTION\n";
+	while (!fin.eof()) {
+		row.clear();
+		getline(fin, line);
+		stringstream s(line);
+		while (getline(s, word, ',')) {
+			row.push_back(word);
+		}
+		int row_size = (int)row.size();
+		for (int i = 0; i < row_size; i++) {
+			cout << row[i] << "\t\t";
+		}
+		cout << endl;
+	}
+	fin.close();
+}
+
+void Student :: addSection(){
+	 // file pointer
+    fstream fout;
+  
+    // opens an existing csv file or creates a new file.
+    fout.open("src/csv/SectionList.csv", ios::out | ios::app);
+        // Insert the data to file
+	int class1;
+	cout<<"ENTER THE CLASS YOU WANT TO ADD SECTION FOR : ";
+	cin>>class1;
+	if (!(class1>=1 && class1<=8)){
+		cout<<"INVALID CLASS NUMBER"<<endl;
+		addSection();
+	}
+	else{
+	string section;
+	cout<<"ENTER THE SECTION YOU WANT TO ADD : ";
+	cin>>section;
+	stringstream convert;
+	convert<<class1;
+	stringstream convert1;
+	convert1<<section;
+	string new_entry = ", "+convert.str()+", "+convert1.str();
+	fout<<new_entry<<endl;
+	fout.close();
+	}
+}
+string Student :: getSections(int cls){
+	fstream fin;
+	fin.open("src/csv/SectionList.csv", ios::in);
+	string line, word;
+	vector<string> row;
+	string sections_list;
+
+	cout<<"SECTION LIST FOR CLASS "<<cls<<endl;
+	while (!fin.eof()) {
+		row.clear();
+		getline(fin, line);
+		stringstream s(line);
+		while (getline(s, word, ',')) {
+			row.push_back(word);
+		}
+		int row_size = (int)row.size();
+		if (cls==stoi(row[1])){
+			sections_list+=row[2];
+		}
+	}
+	return sections_list;
+
+	fin.close();
 }

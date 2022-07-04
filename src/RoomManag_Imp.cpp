@@ -1,7 +1,8 @@
 #include "include\RoomManagement.h"
+#include <iostream>
 
 bool Room_Class::check_room(int x)
-{    if (x >= 1 && x <= 20)
+{    if (x >= 1 && room_no <= 20)
     {
 
         // File pointer
