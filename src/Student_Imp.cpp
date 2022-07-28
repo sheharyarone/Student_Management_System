@@ -22,11 +22,47 @@ void Student::setSection()
 }
 void Student::setRollNo()
 {
-    cout << "ENTER THE ROLL NO. : ";
-    cin>>roll_no;
-	
-}
+	 int _roll_no=1000;
+	ifstream myfile;
+    myfile.open("src/csv/StudentRecord.csv");
+	vector<string> row;
+	string temp;
+ 		int count = 0;
+		string line,word;	
+    while (!(myfile.eof()))
+    {
+	row.clear();
+        	
+        getline(myfile, line);
+		// cout<<line<<endl;
+		// if (line.size() == 0) continue;
+
+		stringstream s(line);
+		if (line == "")
+		{
+			break;
+		}
+
+		while (getline(s, word, ',')) {
+			row.push_back(word);
+			
+		}
+		if ((stoi(row[1])) > (_roll_no)) {
+            
+			_roll_no = stoi(row[1]);
+        }
+  
+    }
+	_roll_no+=1;
+	roll_no=to_string( _roll_no);
+	cout<<"PERSON WITH THE NAME "<<name<<" HAS BEEN ASSIGNED THE ROLL NO. "<<roll_no<<endl;
+    myfile.close();
+}	
 void Student::create(){
+	setName();
+	setRollNo();
+	setClass();
+	setSection();
     // file pointer
     fstream fout;
   
@@ -79,7 +115,6 @@ void Student::read_record()
     if (count == 0){
         cout << "Record not found\n";}
     }
-
 void Student::update_record()
 {
 

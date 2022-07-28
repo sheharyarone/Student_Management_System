@@ -18,20 +18,19 @@ public:
     string section;
 
 public:
-void Room_Num_Againts_SectionClass();
+    void Room_Num_Againts_SectionClass();
     void setroom_no();
-    void set_class();
-    void set_section();
     Room_Class();
     void create();
     void update_record();
     void read_record();
-    void availabe_rooms();
     bool check_class();
 
     private:
     bool check_room(int);
     bool check_room();  
+    void set_class();
+    void set_section();
 };
 
 #endif

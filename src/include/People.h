@@ -19,9 +19,9 @@ public:
 
     People() {}
     virtual void setName();
-    virtual string getName();
-    
     virtual void create()=0; // NEED TO BE SORT OUT 
+    static void read_record();
+    virtual void update_record()=0;
 
 };
 #endif

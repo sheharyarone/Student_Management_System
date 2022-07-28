@@ -48,8 +48,11 @@ void Teacher::create()
         }
     }
 }
-void Teacher::readrec(string tofind)
+void Teacher::read_record()
 {
+    string tofind;
+    cout<<"ENTER THE ID TO FIND : ";
+    cin>>tofind;
     ifstream myfile;
     myfile.open("src/csv/TeacherRecord.csv");
     vector<string> row;
@@ -95,7 +98,7 @@ void Teacher::readrec(string tofind)
     }
 }
 
-void Teacher::updrec()
+void Teacher::update_record()
 {
 
     // File pointer
@@ -137,7 +140,7 @@ void Teacher::updrec()
     else
     {
         cout << "Wrong choice.Enter again\n";
-        updrec();
+        update_record();
     }
 
     // Get the new marks
@@ -223,7 +226,7 @@ void Teacher::updrec()
     rename("src/csv/TeacherRecordnew.csv", "src/csv/TeacherRecord.csv");
 }
 
-void Teacher::delrec(int n)
+void Teacher::delete_record(int n)
 {
     fstream fin, fout;
 

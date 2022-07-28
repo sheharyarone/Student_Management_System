@@ -270,6 +270,9 @@ void Room_Class ::set_section()
 }
 void Room_Class ::create()
 {
+    setroom_no();
+    set_class();
+    set_section();
     // file pointer
     fstream fout;
 
