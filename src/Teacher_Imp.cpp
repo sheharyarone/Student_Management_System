@@ -231,10 +231,10 @@ void Teacher::delete_record(int n)
     fstream fin, fout;
 
     // Open the existing file
-    fin.open("TeacherRecord.csv", ios::in);
+    fin.open("src/csv/TeacherRecord.csv", ios::in);
 
     // Create a new file to store the non-deleted data
-    fout.open("TeacherRecordnew.csv", ios::out);
+    fout.open("src/csv/TeacherRecordnew.csv", ios::out);
 
     int rollnum, roll1, marks, count = 0, i;
     char sub;
@@ -300,8 +300,8 @@ void Teacher::delete_record(int n)
     fout.close();
 
     // removing the existing file
-    remove("TeacherRecord.csv");
+    remove("src/csv/TeacherRecord.csv");
 
     // renaming the new file with the existing file name
-    rename("TeacherRecordnew.csv", "TeacherRecord.csv");
+    rename("src/csv/TeacherRecordnew.csv", "src/csv/TeacherRecord.csv");
 }
