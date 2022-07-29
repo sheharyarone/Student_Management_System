@@ -20,7 +20,7 @@ void Room_Class::Room_Num_Againts_SectionClass()
     while (getline(fin, line))
     {
         stringstream s(line);
-        cout << line << endl;
+        
         while (getline(s, word, ','))
         {
             row.push_back(word);
@@ -103,7 +103,7 @@ bool Room_Class::check_room(int x)
     }
     else
     {
-        cout << "INVALID ROOM NUMBER" << endl;
+        // cout << "INVALID ROOM NUMBER" << endl;
 
         return true;
     }
@@ -182,56 +182,41 @@ bool Room_Class::check_classAndSection()
 
     // Read the Data from the file
     // as String Vector
+    string oldLine = ", "+to_string(_class)+", "+section;
+    string checkLine;
+    string line,temp;
 
-    string _section;
-    _section = ' ' + section;
-    vector<string> row;
-    string line, word, temp;
-    int count = 0;
+
+    for (int i = 1 ; i<=20; i++)
+    {
+
+        checkLine=" "+to_string(i)+oldLine;
+        cout<<checkLine<<endl;
+    
+    
     while (fin >> temp)
     {
-        row.clear();
+        
 
         // read an entire row and
         // store it in a string variable 'line'
         getline(fin, line);
+        cout<<line<<endl;
 
         // used for breaking words
         stringstream s(line);
-
-        // read every column data of a row and
-        // store it in a string variable, 'word'
-        while (getline(s, word, ','))
+        if (line==checkLine)
         {
-
-            // add all the column data
-            // of a row to a vector
-            row.push_back(word);
+            return true;
         }
 
-        if (((row[2]) == _section) && (stoi(row[1]) == _class))
-        {
-            count = 1;
-        }
     }
-    if (count == 0)
-    {
-
-        return false;
     }
-    else
-    {
-        return true;
-    }
+    return false;
 }
 Room_Class::Room_Class()
 {
-    // setroom_no();
-    // set_class();
-    // set_section();
-    // create();
-    // read_record();
-    // update_record();
+  
 }
 void Room_Class::setroom_no()
 {
@@ -265,6 +250,7 @@ void Room_Class ::set_section()
         cout << "SECTION ALREADY EXISTS" << endl;
         cout << "TRY AGAIN" << endl;
         set_class();
+        set_section();
     }
 }
 void Room_Class ::create()

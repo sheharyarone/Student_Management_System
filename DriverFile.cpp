@@ -2,11 +2,10 @@
 
 int main()
 {   
-
     while (true)
     {
 
-        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WELCOME TO OUR SCHOOL MANAGEMENT SYSTEM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<WELCOME TO OUR SCHOOL MANAGEMENT SYSTEM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
         cout << endl
              << "PLEASE SELECT FROM THE OPTIONS AVAILABLE" << endl
              << "1.PRESS 1 FOR STUDENT INFO" << endl
@@ -17,6 +16,9 @@ int main()
         char choice;
         cin >> choice;
         cin.ignore();
+
+        cout<<endl<<endl<<endl<<endl;
+
         if (choice == '1')
         {
             while (true)
@@ -33,6 +35,8 @@ int main()
                 char option;
                 cin >> option;
                 cin.ignore();
+                cout<<endl<<endl<<endl<<endl;
+
                 if (option == '1')
                 {
                     add_student();
@@ -73,6 +77,8 @@ int main()
                 char option;
                 cin >> option;
                 cin.ignore();
+        cout<<endl<<endl<<endl<<endl;
+
                 if (option == '1')
                 {
                     add_teacher();
