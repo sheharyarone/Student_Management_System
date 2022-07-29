@@ -15,7 +15,7 @@ class Room_Class
 public:
     int room_no;
     int _class;
-    string section;
+    char section;
 
 public:
     void Room_Num_Againts_SectionClass();
@@ -24,7 +24,7 @@ public:
     void create();
     void update_record();
     void read_record();
-    bool check_class();
+    bool check_classAndSection();
 
     private:
     bool check_room(int);

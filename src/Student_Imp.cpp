@@ -19,6 +19,7 @@ void Student::setSection()
 {
     cout << "ENTER THE SECTION : ";
     cin>>section;
+	section=toupper(section);
 }
 void Student::setRollNo()
 {

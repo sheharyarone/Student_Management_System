@@ -7,15 +7,24 @@ class Teacher : public People
 {
 public:
     string id;
-    string teaching_classes;
-    string section;
+    int teaching_classes;
+    char section;
 
     Teacher();
-    void setID();
     void addClass();
     void create();
     static void read_record();
     void update_record();
     void delete_record(int n);
+    void add_Class();
+    bool avoid_duplicate_entry();
+    void setID();
+
+
+    private:
+    void getNameAgaintsID(string);
+
+
+
 };
 #endif

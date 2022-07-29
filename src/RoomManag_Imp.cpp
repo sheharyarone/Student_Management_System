@@ -172,7 +172,7 @@ bool Room_Class::check_room()
         return true;
     }
 }
-bool Room_Class::check_class()
+bool Room_Class::check_classAndSection()
 {
     // File pointer
     fstream fin;
@@ -259,9 +259,8 @@ void Room_Class ::set_section()
 {
     cout << "ENTER THE SECTION : ";
     cin >> section;
-    for (int i = 0; i < section.length(); i++)
-        section[i] = toupper(section[i]);
-    if ((check_class()))
+    section=toupper(section);
+    if ((check_classAndSection()))
     {
         cout << "SECTION ALREADY EXISTS" << endl;
         cout << "TRY AGAIN" << endl;

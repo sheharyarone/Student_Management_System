@@ -1,7 +1,7 @@
 #include "Functionalities.cpp"
 
 int main()
-{
+{   
 
     while (true)
     {
@@ -27,8 +27,8 @@ int main()
                      << "1.PRESS 1 TO CREATE RECORD" << endl
                      << "2.PRESS 2 TO READ RECORD" << endl
                      << "3.PRESS 3 TO UPDATE RECORD" << endl
-                     << "4.PRESS  4 TO DELETE RECORD " << endl
-                     << "5.PRESS  5 TO GO BACK " << endl
+                     << "4.PRESS 4 TO DELETE RECORD " << endl
+                     << "5.PRESS 5 TO GO BACK " << endl
                      << "CHOOSE FROM THE OPTIONS : ";
                 char option;
                 cin >> option;
@@ -64,10 +64,11 @@ int main()
                 cout << "\n\n\n\n"
                      << "PLEASE SELECT FROM THE OPTIONS AVAILABLE" << endl
                      << "1.PRESS 1 TO CREATE RECORD" << endl
-                     << "2.PRESS 2 TO READ RECORD" << endl
-                     << "3.PRESS 3 TO UPDATE RECORD" << endl
-                     << "4.PRESS  4 TO DELETE RECORD " << endl
-                     << "5.PRESS  5 TO GO BACK " << endl
+                     << "2.PRESS 2 TO ADD ANOTHER CLASS OF TEACHER" << endl
+                     << "2.PRESS 3 TO READ RECORD" << endl
+                     << "3.PRESS 4 TO UPDATE RECORD" << endl
+                     << "4.PRESS  5 TO DELETE RECORD " << endl
+                     << "5.PRESS  6 TO GO BACK " << endl
                      << "CHOOSE FROM THE OPTIONS : ";
                 char option;
                 cin >> option;
@@ -78,17 +79,21 @@ int main()
                 }
                 else if (option == '2')
                 {
-                    read_teacher();
+                    add_another_class();
                 }
                 else if (option == '3')
                 {
-                    update_teacher();
+                    read_teacher();
                 }
                 else if (option == '4')
                 {
-                    delete_teacher();
+                    update_teacher();
                 }
                 else if (option == '5')
+                {
+                    delete_teacher();
+                }
+                else if (option == '6')
                 {
                     break;
                 }

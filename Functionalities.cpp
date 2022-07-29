@@ -61,7 +61,14 @@ void update_class_to_room()
     r1.update_record();
 }   
 void class_room_num_against_section()
+
 {
     Room_Class r1;
     r1.Room_Num_Againts_SectionClass();
+}
+void add_another_class()
+{
+    Teacher t1;
+    t1.add_Class();
+
 }
